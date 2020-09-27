@@ -56,6 +56,8 @@ COPY htpasswd /htpasswd
 
 RUN mkdir /config
 
+RUN mkdir /var/www
+
 RUN \
     cd /var/www &&\
     # install rutorrent
