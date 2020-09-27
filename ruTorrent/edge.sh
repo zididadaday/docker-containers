@@ -17,6 +17,13 @@ echo "EDGE variable found"
 			rm /config/rutorrent/conf/config.php
 			cp /config.php /config/rutorrent/conf/config.php
 			chown -R torrent:www-data /config/rutorrent
+			# fixing program paths php, curl, gzip, id
+			sed -i "s+\"php\" \t=> '',+\"php\" => '/usr/bin/php',+g" /config/rutorrent/conf/config.php
+			sed -i "s+\"curl\"\t=> '',+\"curl\" => '/usr/bin/curl',+g" /config/rutorrent/conf/config.php
+			sed -i "s+\"gzip\"\t=> '',+\"gzip\" => '/bin/gzip',+g" /config/rutorrent/conf/config.php
+			sed -i "s+\"id\"\t=> '',+\"id\" => '/usr/bin/id',+g" /config/rutorrent/conf/config.php
+			# adding paths that are not included, python, pgrep, sox
+			sed -i "s+\"stat\"\t=> '',+\"stat\" => '/usr/bin/stat',\n\t\t\"python\" => '/usr/bin/python3',\n\t\t\"pgrep\" => '/usr/bin/pgrep',\n\t\t\"sox\" => '/usr/bin/sox',+g" /config/rutorrent/conf/config.php
 			exit
 		fi
   elif [ "$EDGE" == "0" ]

@@ -33,8 +33,15 @@ RUN \
         unrar\
         unzip\
         git\
+        python3-requests\
+        python3-setuptools\
+        python3-pip\
+        sox\
 		wget &&\
     rm -rf /var/lib/apt/lists/*
+
+#install cloudscaper
+RUN pip3 install cloudscraper
 
 # grab gosu for easy step-down from root
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
@@ -106,6 +113,6 @@ RUN chmod 777 /edge.sh
 
 EXPOSE 80 443 45566-45576 9527
 
-VOLUME ["/config", "/download",]
+VOLUME /config /download
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/docker-start.sh"]
