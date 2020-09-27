@@ -33,9 +33,6 @@ RUN \
         unrar\
         unzip\
         git\
-        # python3-requests\
-        # python3-setuptools\
-        # python3-pip\
         sox\
 		wget &&\
     rm -rf /var/lib/apt/lists/*
