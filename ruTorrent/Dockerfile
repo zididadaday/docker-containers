@@ -33,9 +33,9 @@ RUN \
         unrar\
         unzip\
         git\
-        python3-requests\
-        python3-setuptools\
-        python3-pip\
+        # python3-requests\
+        # python3-setuptools\
+        # python3-pip\
         sox\
 		wget &&\
     rm -rf /var/lib/apt/lists/*
@@ -56,7 +56,7 @@ COPY htpasswd /htpasswd
 
 RUN mkdir /config
 
-RUN mkdir /var/www
+#RUN mkdir /var/www
 
 RUN \
     cd /var/www &&\
